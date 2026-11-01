@@ -1,0 +1,13 @@
+{
+  "extends": "@sindresorhus/tsconfig",
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "strict": false,
+    "rootDir": "./",
+    "sourceMap": true,
+    "inlineSources": true,
+    "strictNullChecks": true,
+  },
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["**/*.spec.ts"]
+}

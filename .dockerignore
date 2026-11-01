@@ -1,0 +1,8 @@
+docker-cache/
+node_modules/
+distribution/
+assets/css/
+assets/js/
+assets/images/webp/
+assets/images/avif/
+docker-compose.yml

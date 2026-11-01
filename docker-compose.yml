@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+    nodejs-web:
+        container_name: nodejs-web
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        restart: "no"
+        ports:
+            - 8080:8080

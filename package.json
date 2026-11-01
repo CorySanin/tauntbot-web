@@ -1,0 +1,54 @@
+{
+  "name": "nodejs-web-template",
+  "version": "0.0.1",
+  "description": "A nodejs web project",
+  "keywords": [
+    "web",
+    "template"
+  ],
+  "homepage": "https://github.com/CorySanin/nodejs-web-template#readme",
+  "bugs": {
+    "url": "https://github.com/CorySanin/nodejs-web-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CorySanin/nodejs-web-template.git"
+  },
+  "license": "MIT",
+  "author": "Cory Sanin",
+  "type": "module",
+  "main": "./distribution/index.js",
+  "files": [
+    "distribution",
+    "assets",
+    "views"
+  ],
+  "scripts": {
+    "build": "tsc && forking-build-shit",
+    "start": "node distribution/index.js",
+    "watch": "forking-build-shit --watch"
+  },
+  "dependencies": {
+    "ejs": "7.0.2",
+    "express": "5.3.0",
+    "express-session": "1.19.0",
+    "ky": "2.2.0",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@sindresorhus/tsconfig": "9.0.0",
+    "@types/express": "^5.0.6",
+    "@types/express-session": "^1.19.0",
+    "@types/node": "^26.6.6",
+    "forking-build-shit": "1.1.9",
+    "typescript": "7.0.2"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.16.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.16.1"
+}
