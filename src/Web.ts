@@ -63,7 +63,7 @@ export class Web {
             res.send('Healthy');
         });
 
-        app.get('/', (_, res) => {
+        app.get('/', (_req, res) => {
             res.render('index', {
                 inliner: this.inliner,
                 page: {
@@ -83,6 +83,18 @@ export class Web {
         }
 
         app.use('/assets', express.static('assets', { maxAge: '30 days' }));
+
+        app.use((_req, res) => {
+            res.status(404).render('error', {
+                inliner: this.inliner,
+                page: {
+                    title: '404',
+                    titlesuffix: 'Taunt Bot for Discord'
+                },
+                httpStatus: '404',
+                httpStatusMessage: 'File not found.'
+            });
+        });
 
         this._webserver = this.app.listen(this.port, () => console.log(`web server is running on port ${this.port}`));
     }
