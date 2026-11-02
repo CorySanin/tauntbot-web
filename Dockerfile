@@ -13,8 +13,7 @@ RUN --mount=target=/usr/src/app/package.json,source=package.json \
 
 COPY --link . .
 
-RUN pnpm run build && \
-  ln -sf /usr/share/fonts assets/
+RUN pnpm run build
 
 FROM base AS composit
 
