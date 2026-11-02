@@ -1,5 +1,7 @@
 import * as http from "http";
+import fs from 'fs';
 import crypto from 'crypto';
+import { LRUCache } from 'lru-cache'
 import express from 'express';
 import type { Express } from 'express';
 
@@ -20,10 +22,15 @@ export class Web {
     private app: Express | null = null;
     private port: number;
     private options: WebConfig;
+    private assetCache: LRUCache<string, string>;
 
     constructor(options: WebConfig = {}) {
         this.options = options;
         this.port = notStupidParseInt(process.env['PORT']) || options['port'] as number || 8080;
+        this.assetCache = new LRUCache({
+            max: 15,
+            allowStale: true
+        });
     }
 
     initialize = async () => {
@@ -52,15 +59,27 @@ export class Web {
 
         app.get('/', (_, res) => {
             res.render('index', {
+                inliner: this.inliner,
                 page: {
-                    title: 'Web',
-                    titlesuffix: 'Home',
-                    description: 'Homepage'
+                    title: 'Taunt Bot for Discord',
+                    titlesuffix: 'Celebrate your Victories',
+                    description: 'Hear your winning anthem in Discord voice chat. Upload your own audio clips for the bot to play.'
                 }
             });
         });
 
         this._webserver = this.app.listen(this.port, () => console.log(`web server is running on port ${this.port}`));
+    }
+
+    private inliner = (file: string) => {
+        const cache = this.assetCache;
+        const fromCache = cache.get(file);
+        if (fromCache) {
+            return fromCache;
+        }
+        const fromDisk = fs.readFileSync(file, {encoding: 'utf-8'});
+        cache.set(file, fromDisk);
+        return fromDisk;
     }
 
     close = () => {
