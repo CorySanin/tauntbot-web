@@ -8,6 +8,7 @@ import type { Express } from 'express';
 export interface WebConfig {
     port?: number;
     trustProxy?: string;
+    supportUrl?: string;
 }
 
 /**
@@ -68,6 +69,13 @@ export class Web {
             });
         });
 
+        if (options.supportUrl) {
+            const supportUrl = options.supportUrl;
+            app.get('/discord', (_, res) => {
+                res.redirect(supportUrl);
+            });
+        }
+
         this._webserver = this.app.listen(this.port, () => console.log(`web server is running on port ${this.port}`));
     }
 
@@ -77,7 +85,7 @@ export class Web {
         if (fromCache) {
             return fromCache;
         }
-        const fromDisk = fs.readFileSync(file, {encoding: 'utf-8'});
+        const fromDisk = fs.readFileSync(file, { encoding: 'utf-8' });
         cache.set(file, fromDisk);
         return fromDisk;
     }

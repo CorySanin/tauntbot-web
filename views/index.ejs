@@ -6,10 +6,90 @@
 </head>
 
 <body class="preload">
-    <%- include("navigation", locals) %>
     <div class="content">
-        <h1>Hello World</h1>
-        <%- inliner('assets/images/svg/logo.svg') %>
+        <div id="logo"><%- inliner('assets/images/svg/logo.svg') %></div>
+        <div class="center">
+            <a class="addBtn" href="https://discordapp.com/oauth2/authorize?client_id=227435708183216128&scope=bot&permissions=3165184">Add to Discord</a>
+        </div>
+        <section>
+            <div>
+                <h1>Taunt&nbsp;Bot</h1>
+            </div>
+            <div>
+                <p>
+                    Taunt Bot is a Discord bot that plays your custom audio clips on command and when you join a voice channel. Play your victory anthem when you win. Humble yourself with a lose track. Intro taunts play when you connect to voice chat.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h2>Stats</h2>
+            </div>
+            <div>
+                Connected to 672 Discord guilds
+            </div>
+            <div>
+                123 taunts played this year
+            </div>
+        </section>
+        <section>
+            <div>
+                <h2>Commands</h2>
+            </div>
+            <div>
+                <h3 class="command">/upload</h3>
+                <p class="color-2">Uploads an audio clip to serve as your taunt</p>
+            </div>
+            <div>
+                <h3 class="command">/win</h3>
+                <p class="color-2">Plays your "victory" taunt</p>
+            </div>
+            <div>
+                <h3 class="command">/mvp</h3>
+                <p class="color-2">Plays your "mvp" taunt</p>
+            </div>
+            <div>
+                <h3 class="command">/lose</h3>
+                <p class="color-2">Plays your "lose" taunt</p>
+            </div>
+            <div>
+                <h3 class="command">/stop</h3>
+                <p class="color-2">Stops taunt playback early</p>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h2>Privacy</h2>
+            </div>
+            <div>
+                <p>The only data that is kept is your currently uploaded audio taunts and logs. Delete your taunts using the <span>/delete</span> command.</p>
+                <p>Taunt Bot logs taunt plays (what audio file in which server, statistics).</p>
+                <p>Your data is never shared or sold.</p>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h2>Support</h2>
+            </div>
+            <div>
+                Join <a href="/discord">my Discord Guild</a> for assistance.
+            </div>
+        </section>
+        <section>
+            <div>
+                <h2>Source Code</h2>
+            </div>
+            <div>
+                <p>Taunt Bot is open source, licensed under GPLv3. <a href="https://github.com/CorySanin/tauntbot">Browse the source code</a> on GitHub.</p>
+                <p>Available in <a href="https://www.npmjs.com/package/tauntbot">npm</a> and <a href="https://hub.docker.com/r/corysanin/tauntbot">Docker Hub</a>.</p>
+            </div>
+            <div>
+                <p>This website is licensed under MIT. <a href="https://github.com/CorySanin/tauntbot-web">Browse the source code</a> on GitHub.</p>
+            </div>
+            <div>
+                Site and bot developed by <a href="https://sanin.dev/">Cory Sanin</a> AKA <a href="https://whoisworm.com/">WORM</a>
+            </div>
+        </section>
     </div>
 </body>
 </html>
