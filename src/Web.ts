@@ -1,5 +1,6 @@
 import * as http from "http";
 import fs from 'fs';
+import path from 'path';
 import crypto from 'crypto';
 import { LRUCache } from 'lru-cache'
 import express from 'express';
@@ -9,6 +10,8 @@ export interface WebConfig {
     port?: number;
     trustProxy?: string;
     supportUrl?: string;
+    clientId?: string;
+    permissions?: number;
 }
 
 /**
@@ -38,7 +41,7 @@ export class Web {
         const options = this.options;
         const app: Express = this.app = express();
 
-        app.set('trust proxy', options.trustProxy || false);
+        app.set('trust proxy', options.trustProxy ?? false);
         app.set('view engine', 'ejs');
         app.set('view options', { outputFunctionName: 'echo' });
         app.get('/favicon.ico', (_, res) => {
@@ -67,7 +70,8 @@ export class Web {
                     title: 'Taunt Bot for Discord',
                     titlesuffix: 'Celebrate your Victories',
                     description: 'Hear your winning anthem in Discord voice chat. Upload your own audio clips for the bot to play.'
-                }
+                },
+                connectUrl: options.clientId && `https://discordapp.com/oauth2/authorize?client_id=${options.clientId}&scope=bot&permissions=${options.permissions ?? 3165184}`
             });
         });
 
