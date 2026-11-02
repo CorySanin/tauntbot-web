@@ -1,0 +1,36 @@
+{
+  "icon": {
+    "desktop": {
+      "regularIconTransformation": {
+        "type": "background",
+        "backgroundColor": "#009688",
+        "backgroundRadius": 0.8,
+        "imageScale": 0.7
+      },
+      "darkIconType": "none"
+    },
+    "touch": {
+      "transformation": {
+        "type": "background",
+        "backgroundColor": "#009688",
+        "backgroundRadius": 0,
+        "imageScale": 0.7
+      },
+      "appTitle": "Taunt Bot"
+    },
+    "webAppManifest": {
+      "transformation": {
+        "type": "background",
+        "backgroundColor": "#009688",
+        "backgroundRadius": 0,
+        "imageScale": 0.7
+      },
+      "backgroundColor": "#202024",
+      "name": "Taunt Bot",
+      "shortName": "TauntBot",
+      "themeColor": "#009688"
+    }
+  },
+  "path": "/assets/icons/",
+  "skipMetadataInjection": false
+}

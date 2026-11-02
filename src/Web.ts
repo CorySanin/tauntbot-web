@@ -41,7 +41,6 @@ export class Web {
         app.set('trust proxy', options.trustProxy || false);
         app.set('view engine', 'ejs');
         app.set('view options', { outputFunctionName: 'echo' });
-        app.use('/assets', express.static('assets', { maxAge: '30 days' }));
         app.use((_req, res, next) => {
             crypto.randomBytes(32, (err, randomBytes) => {
                 if (err) {
@@ -75,6 +74,8 @@ export class Web {
                 res.redirect(supportUrl);
             });
         }
+
+        app.use('/assets', express.static('assets', { maxAge: '30 days' }));
 
         this._webserver = this.app.listen(this.port, () => console.log(`web server is running on port ${this.port}`));
     }

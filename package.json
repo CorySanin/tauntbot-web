@@ -24,7 +24,8 @@
     "views"
   ],
   "scripts": {
-    "build": "tsc && forking-build-shit",
+    "favicon": "realfavicon generate assets/images/svg/logo.svg favicon-settings.json assets/icons/output-data.json assets/icons/",
+    "build": "tsc && pnpm run favicon && forking-build-shit",
     "start": "node distribution/src/index.js",
     "watch": "forking-build-shit --watch"
   },
@@ -39,6 +40,8 @@
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
     "forking-build-shit": "1.1.9",
+    "node-gyp": "^13.1.0",
+    "realfavicon": "^0.9.3",
     "typescript": "7.0.2"
   },
   "devEngines": {
