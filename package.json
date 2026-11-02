@@ -42,6 +42,7 @@
     "forking-build-shit": "1.1.9",
     "node-gyp": "^13.1.0",
     "realfavicon": "^0.9.3",
+    "tauntbot": "^5.0.1",
     "typescript": "7.0.2"
   },
   "devEngines": {

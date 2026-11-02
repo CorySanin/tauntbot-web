@@ -5,6 +5,7 @@ import crypto from 'crypto';
 import { LRUCache } from 'lru-cache'
 import express from 'express';
 import type { Express } from 'express';
+import type { stats } from 'tauntbot';
 
 export interface WebConfig {
     port?: number;
@@ -12,6 +13,12 @@ export interface WebConfig {
     supportUrl?: string;
     clientId?: string;
     permissions?: number;
+    statsDir?: string;
+}
+
+export interface TbStatsFile {
+    today: stats.TauntStats;
+    year: stats.TauntStats;
 }
 
 /**
@@ -63,7 +70,7 @@ export class Web {
             res.send('Healthy');
         });
 
-        app.get('/', (_req, res) => {
+        app.get('/', async (_req, res) => {
             res.render('index', {
                 inliner: this.inliner,
                 page: {
@@ -71,9 +78,17 @@ export class Web {
                     titlesuffix: 'Celebrate your Victories',
                     description: 'Hear your winning anthem in Discord voice chat. Upload your own audio clips for the bot to play.'
                 },
-                connectUrl: options.clientId && `https://discordapp.com/oauth2/authorize?client_id=${options.clientId}&scope=bot&permissions=${options.permissions ?? 3165184}`
+                connectUrl: options.clientId && `https://discordapp.com/oauth2/authorize?client_id=${options.clientId}&scope=bot&permissions=${options.permissions ?? 3165184}`,
+                stats: await this.getStatsBody()
             });
         });
+
+        const statsEndpoint = async (_req: express.Request, res: express.Response) => {
+            res.send(await this.getStatsBody());
+        }
+
+        app.get('/stats.json.php', statsEndpoint);
+        app.get('/stats.json', statsEndpoint);
 
         if (options.supportUrl) {
             const supportUrl = options.supportUrl;
@@ -108,6 +123,38 @@ export class Web {
         const fromDisk = fs.readFileSync(file, { encoding: 'utf-8' });
         cache.set(file, fromDisk);
         return fromDisk;
+    }
+
+    private async readStats() {
+        try {
+            const contents = await fs.promises.readFile(path.join(this.options.statsDir ?? 'stats', 'stats.json'), { encoding: 'utf-8' });
+            return JSON.parse(contents) as TbStatsFile;
+        }
+        catch {
+            return null;
+        }
+    }
+
+    private async getServerCount() {
+        try {
+            const contents = await fs.promises.readFile(path.join(this.options.statsDir ?? 'stats', 'serverCount.txt'), { encoding: 'utf-8' });
+            return notStupidParseInt(contents.trim());
+        }
+        catch {
+            return -1;
+        }
+    }
+
+    private async getStatsBody() {
+        const body = {
+            server_count: await this.getServerCount(),
+            year_taunts: -1
+        };
+        const yearTaunts = (await this.readStats())?.year;
+        if (yearTaunts) {
+            body.year_taunts = (yearTaunts.intro ?? 0) + (yearTaunts.lose ?? 0) + (yearTaunts.mvp ?? 0) + (yearTaunts.victory ?? 0)
+        }
+        return body;
     }
 
     close = () => {

@@ -1,3 +1,4 @@
 allowBuilds:
   '@parcel/watcher': false
+  bufferutil: false
   sharp: true

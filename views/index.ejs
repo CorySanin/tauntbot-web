@@ -27,22 +27,28 @@
                 <h2>Getting Started</h2>
             </div>
             <div>
-                <p>If you're a server owner, start by <a href="<%= connectUrl%>">connecting Taunt Bot</a> so your members can use it.</p>
+                <p>If you're a server owner, start by <a href="<%= connectUrl %>">connecting Taunt Bot</a> so your members can use it.</p>
                 <p>Once you're in a guild that has Taunt Bot in it, use the <span class="command">/upload</span> command to upload taunts.</p>
                 <p>While in voice, use the <a href="#commands">corresponding play commands</a> to hear Taunt Bot play your tracks.</p>
             </div>
         </section>
+        <% if (stats.server_count > 0 || stats.year_taunts > 0) { %>
         <section>
             <div>
                 <h2>Stats</h2>
             </div>
+            <% if (stats.server_count > 0) { %>
             <div>
-                Connected to 672 Discord guilds
+                Connected to <%= stats.server_count %> Discord guilds
             </div>
+            <% } %>
+            <% if (stats.year_taunts > 0) { %>
             <div>
-                123 taunts played this year
+                <%= stats.year_taunts %> taunts played this year
             </div>
+            <% } %>
         </section>
+        <% } %>
         <section>
             <div>
                 <h2 id="commands">Commands</h2>
