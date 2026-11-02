@@ -58,10 +58,12 @@ h3.command {
     font-size: 1.5em;
     line-height: 1.2em;
     margin-bottom: .3em;
+    display: block;
 }
 
 .command {
     font-family: monospace, var(--body-font-family);
+    display: inline-block;
 }
 
 .content {
@@ -95,6 +97,11 @@ section {
 
 .center {
     text-align: center;
+}
+
+.ital {
+    font-variant: small-caps;
+    font-style: italic;
 }
 
 a.addBtn {
