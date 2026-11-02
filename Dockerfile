@@ -31,7 +31,7 @@ COPY --link --exclude=node_modules/ --from=build-env /usr/src/app /usr/src/app
 
 FROM base AS deploy
 
-HEALTHCHECK --interval=5m --timeout=3s \
+HEALTHCHECK --interval=5m --timeout=3s --start-period=2m --start-interval=5s \
   CMD wget --no-verbose --tries=1 --spider http://localhost:8080/healthcheck || exit 1
 
 EXPOSE 8080
