@@ -42,4 +42,4 @@ COPY --from=composit --chown=appuser:appuser /usr/src/app /usr/src/app
 
 USER node
 
-CMD [ "node", "distribution/index.js"]
+CMD [ "node", "distribution/src/index.js"]
