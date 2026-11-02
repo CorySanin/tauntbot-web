@@ -41,9 +41,8 @@ jobs:
       - name: Checkout (for icon)
         uses: &checkout actions/checkout@v7
         with:
-          repository: CorySanin/tauntbot-web
           sparse-checkout: |
-            logo.svg
+            assets/images/svg/logo.svg
           sparse-checkout-cone-mode: false
       - name: Define image labels
         id: labels
@@ -60,8 +59,8 @@ jobs:
             echo "org.opencontainers.image.url=https://taunt.bot/"
             echo "org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}"
             echo "org.opencontainers.image.documentation=${{ github.server_url }}/${{ github.repository }}#readme"
-            echo "dev.dozzle.icon=data:image/svg+xml;base64,$(base64 < logo.svg | tr -d '\n')"
-            echo "net.unraid.docker.icon=https://raw.githubusercontent.com/CorySanin/tauntbot/refs/heads/master/logo.svg"
+            echo "dev.dozzle.icon=data:image/svg+xml;base64,$(base64 < assets/images/svg/logo.svg | tr -d '\n')"
+            echo "net.unraid.docker.icon=https://raw.githubusercontent.com/CorySanin/tauntbot-web/refs/heads/master/assets/images/svg/logo.svg"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
