@@ -41,6 +41,9 @@ export class Web {
         app.set('trust proxy', options.trustProxy || false);
         app.set('view engine', 'ejs');
         app.set('view options', { outputFunctionName: 'echo' });
+        app.get('/favicon.ico', (_, res) => {
+            res.sendFile(path.join(process.cwd(), 'assets', 'icons', 'favicon.ico'));
+        });
         app.use((_req, res, next) => {
             crypto.randomBytes(32, (err, randomBytes) => {
                 if (err) {
