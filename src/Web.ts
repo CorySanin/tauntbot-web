@@ -1,14 +1,11 @@
 import * as http from "http";
 import crypto from 'crypto';
 import express from 'express';
-import session from 'express-session';
-import ky from 'ky';
 import type { Express } from 'express';
 
 export interface WebConfig {
-    sessionSecret?: string;
     port?: number;
-    secure?: boolean;
+    trustProxy?: string;
 }
 
 /**
@@ -31,30 +28,12 @@ export class Web {
 
     initialize = async () => {
         const options = this.options;
-        const sessionSecret = process.env['SESSIONSECRET'] || options.sessionSecret;
         const app: Express = this.app = express();
 
-        if (!sessionSecret) {
-            console.error('sessionSecret is required.');
-            throw new Error('sessionSecret is required.');
-        }
-
-        app.set('trust proxy', 1);
+        app.set('trust proxy', options.trustProxy || false);
         app.set('view engine', 'ejs');
         app.set('view options', { outputFunctionName: 'echo' });
         app.use('/assets', express.static('assets', { maxAge: '30 days' }));
-        app.use(session({
-            name: 'sessionId',
-            secret: sessionSecret,
-            resave: true,
-            saveUninitialized: false,
-            store: undefined,
-            cookie: {
-                maxAge: notStupidParseInt(process.env['COOKIETTL']) || 1000 * 60 * 60 * 24 * 30, // 30 days
-                httpOnly: true,
-                secure: !!options.secure
-            }
-        }));
         app.use((_req, res, next) => {
             crypto.randomBytes(32, (err, randomBytes) => {
                 if (err) {
@@ -79,10 +58,6 @@ export class Web {
                     description: 'Homepage'
                 }
             });
-        });
-
-        app.get('/ky', async (_, res) => {
-            res.send(await (await ky.get('https://sanin.dev')).text());
         });
 
         this._webserver = this.app.listen(this.port, () => console.log(`web server is running on port ${this.port}`));
