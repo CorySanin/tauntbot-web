@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "favicon": "realfavicon generate assets/images/svg/logo.svg favicon-settings.json assets/icons/output-data.json assets/icons/",
-    "build": "tsc && pnpm run favicon && forking-build-shit",
+    "build": "tsc && pnpm run favicon && SCRIPTINDIR=./distribution/scripts/ forking-build-shit",
     "start": "node distribution/src/index.js",
     "watch": "forking-build-shit --watch"
   },

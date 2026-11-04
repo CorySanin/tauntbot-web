@@ -42,10 +42,6 @@ html {
     color: var(--font-1);
 }
 
-body {
-    background: radial-gradient(75% 550px at 50% -100px, rgba(0, 150, 136, var(--gradient-alpha)) 25%, rgba(0, 150, 136, 0) 100%);
-}
-
 .color-2 {
     color: var(--font-2);
 }
@@ -59,82 +55,6 @@ section>div {
 #botheading svg,
 #miniD #channellist .voice>div#tauntbotvoice svg {
     background-color: var(--tb-teal);
-}
-
-#miniD {
-    #everythingelse {
-        #context {
-            background-color: var(--background);
-            outline: 1px solid var(--panel-outline);
-
-            .cmdListing:hover {
-                background-color: var(--bubble);
-            }
-        }
-
-        #chattextbox {
-            background-color: var(--panel-outline);
-            outline: 1px solid var(--background);
-        }
-    }
-
-    #channellist {
-        background-color: var(--background);
-        color: var(--font-2);
-
-        .selected {
-            background-color: var(--bubble);
-            color: var(--font-1);
-        }
-
-        .voice>div svg {
-            background-color: var(--font-light-1);
-            color: var(--font-dark-1);
-        }
-
-        .voice .joined {
-            color: var(--tb-teal-contrast-2)
-        }
-    }
-
-    #serverlist {
-        border-right: 1px solid var(--panel-outline);
-        background-color: var(--background);
-
-        &>div {
-
-            &.selected,
-            &.unread {
-                &::before {
-                    background-color: var(--font-1);
-                }
-            }
-        }
-
-        .background {
-            color: var(--font-light-1);
-
-            &.magenta svg {
-                background-color: #b01e5c;
-            }
-
-            &.green svg {
-                background-color: #065e3a;
-            }
-
-            &.blurple svg {
-                background-color: #394694;
-            }
-
-            &.gold svg {
-                background-color: #5D4037;
-            }
-        }
-
-        svg {
-            background-color: var(--bubble);
-        }
-    }
 }
 
 a {

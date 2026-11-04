@@ -4,8 +4,7 @@ import path from 'path';
 import crypto from 'crypto';
 import { LRUCache } from 'lru-cache'
 import express from 'express';
-import type { Express } from 'express';
-import type { stats } from 'tauntbot';
+import { type stats, types as tbTypes } from 'tauntbot';
 
 export interface WebConfig {
     port?: number;
@@ -35,7 +34,7 @@ export function notStupidParseInt(v: string | undefined): number {
 
 export class Web {
     private _webserver: http.Server | null = null;
-    private app: Express | null = null;
+    private app: express.Application | null = null;
     private port: number;
     private options: WebConfig;
     private assetCache: LRUCache<string, string>;
@@ -51,7 +50,7 @@ export class Web {
 
     initialize = async () => {
         const options = this.options;
-        const app: Express = this.app = express();
+        const app: express.Application = this.app = express();
 
         app.set('trust proxy', options.trustProxy ?? false);
         app.set('view engine', 'ejs');
@@ -98,7 +97,8 @@ export class Web {
                         slashCommand: '/lose',
                         description: 'Plays your lose track'
                     }
-                ] satisfies CommandDetails[]
+                ] satisfies CommandDetails[],
+                tauntParameters: tbTypes.TauntParameters
             });
         });
 

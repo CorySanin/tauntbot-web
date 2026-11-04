@@ -19,7 +19,19 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-title" content="Taunt Bot" />
 <link rel="manifest" href="/assets/icons/site.webmanifest" />
-<link rel="stylesheet" href="/assets/css/styles.css?v2">
+<link rel="prefetch" href="/assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" fetchpriority="low">
+<link rel="prefetch" href="/assets/fonts/Zen_Dots/ZenDots-Regular.ttf" fetchpriority="low">
+<link rel="prefetch" href="/assets/audio/fluxer/user-join.mp3" fetchpriority="low">
+<link rel="prefetch" href="/assets/audio/fluxer/user-leave.mp3" fetchpriority="low">
+<link rel="prefetch" href="/assets/audio/noise-maker.mp3" fetchpriority="low">
+<link rel="prefetch" href="/assets/audio/sad_trombone.mp3" fetchpriority="low">
+<link rel="stylesheet" href="/assets/css/lazy.css?v1" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="/assets/css/lazy.css?v1">
+</noscript>
+<style>
+    <%- inliner('assets/css/styles.css') %>
+</style>
 <script nonce="<%= cspNonce %>">
     document.addEventListener("DOMContentLoaded", function() {
         document.body.classList.remove('preload');

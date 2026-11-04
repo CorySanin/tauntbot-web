@@ -1,15 +1,3 @@
-@font-face {
-    font-family: 'Zen Dots';
-    src: url('/assets/fonts/Zen_Dots/ZenDots-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Space Grotesk';
-    src: url('/assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf');
-}
-
-@import url('/assets/fonts/Zen_Dots/ZenDots-Regular.ttf');
-
 :root {
     --body-font-family: "Space Grotesk", "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif
 }
@@ -28,6 +16,10 @@ body {
     box-sizing: border-box;
     font-size: 14pt;
     line-height: 1.4em;
+}
+
+html body svg {
+    height: initial;
 }
 
 h1,
@@ -99,11 +91,6 @@ section {
     text-align: center;
 }
 
-.ital {
-    font-variant: small-caps;
-    font-style: italic;
-}
-
 a.addBtn {
     display: inline-block;
     text-decoration: none;
@@ -134,144 +121,8 @@ body {
     }
 }
 
-#miniD {
-    height: 400px;
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-    font-size: 10pt;
-    user-select: none;
-
-    &>div {
-        height: 100%;
-        display: block;
-        float: left;
-    }
-
-    #everythingelse {
-        width: calc(100% - 120px - 50px);
-        position: relative;
-
-        #context {
-            z-index: 1000;
-            position: absolute;
-            left: 8px;
-            right: 8px;
-            bottom: 50px;
-            padding: 5px 5px;
-            border-radius: 5px;
-
-            #botheading,
-            .cmdListing {
-                padding: 0px 5px;
-                border-radius: 5px;
-            }
-
-            #botheading {
-                svg {
-                    height: 1em;
-                    width: 1em;
-                    alignment-baseline: central;
-                    border-radius: .75em;
-                    padding: .15em
-                }
-            }
-
-            .cmdListing {
-                cursor: pointer;
-                margin-top: .5em;
-
-                .slash {
-                    font-weight: bold;
-                    line-height: 1.4em;
-                }
-
-                .description {
-                    font-size: .75em;
-                    line-height: 1.4em;
-                }
-            }
-        }
-
-        #chattextbox {
-            position: absolute;
-            left: 8px;
-            right: 8px;
-            bottom: 8px;
-            border-radius: 5px;
-            padding: 5px 10px;
-        }
-    }
-
-    #channellist {
-        width: 120px;
-        padding: 2px 4px;
-
-        &>div {
-            padding: 0 6px;
-
-            &.selected {
-                border-radius: 5px;
-            }
-        }
-
-        .voice>div {
-            margin-left: 10pt;
-
-            svg {
-                border-radius: 10pt;
-                overflow: none;
-                padding: .1em;
-            }
-
-            &#tauntbotvoice {
-                display: none;
-            }
-        }
-
-        div svg {
-            alignment-baseline: central;
-            height: 10pt;
-            width: 10pt;
-        }
-    }
-
-    #serverlist {
-        width: 50px;
-
-        &>div {
-            text-align: center;
-            margin-top: 8px;
-
-            &.selected,
-            &.unread {
-                position: relative;
-
-                &::before {
-                    display: block;
-                    position: absolute;
-                    width: 3px;
-                    height: 35px;
-                    border-top-right-radius: 3px;
-                    border-bottom-right-radius: 3px;
-                    content: '';
-                }
-            }
-
-            &.unread.unread::before {
-                height: 6px;
-                top: 15px;
-            }
-
-            svg {
-                overflow: visible;
-                padding: 8px;
-                width: 35px;
-                height: 35px;
-                border-radius: 18px;
-            }
-        }
-    }
+section:has(#miniD) {
+    display: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -299,11 +150,5 @@ body {
         #everythingelse {
             width: calc(100% - 120px);
         }
-    }
-}
-
-@media screen and (max-width: 300px) {
-    section:has(#miniD) {
-        display: none;
     }
 }

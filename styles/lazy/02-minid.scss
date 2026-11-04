@@ -1,0 +1,227 @@
+section:has(#miniD#miniD) {
+    display: block;
+}
+
+#miniD {
+    height: 400px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    font-size: 10pt;
+    user-select: none;
+
+    #everythingelse {
+        #context {
+            background-color: var(--background);
+            outline: 1px solid var(--panel-outline);
+
+            .cmdListing:hover {
+                background-color: var(--bubble);
+            }
+        }
+
+        #chattextbox {
+            background-color: var(--panel-outline);
+            outline: 1px solid var(--background);
+        }
+    }
+
+    #channellist {
+        background-color: var(--background);
+        color: var(--font-2);
+
+        .selected {
+            background-color: var(--bubble);
+            color: var(--font-1);
+        }
+
+        .voice>div svg {
+            background-color: var(--font-light-1);
+            color: var(--font-dark-1);
+        }
+
+        .voice .joined {
+            color: var(--tb-teal-contrast-2)
+        }
+    }
+
+    #serverlist {
+        border-right: 1px solid var(--panel-outline);
+        background-color: var(--background);
+
+        &>div {
+
+            &.selected,
+            &.unread {
+                &::before {
+                    background-color: var(--font-1);
+                }
+            }
+        }
+
+        .background {
+            color: var(--font-light-1);
+
+            &.magenta svg {
+                background-color: #b01e5c;
+            }
+
+            &.green svg {
+                background-color: #065e3a;
+            }
+
+            &.blurple svg {
+                background-color: #394694;
+            }
+
+            &.gold svg {
+                background-color: #5D4037;
+            }
+        }
+
+        svg {
+            background-color: var(--bubble);
+        }
+    }
+
+    &>div {
+        height: 100%;
+        display: block;
+        float: left;
+    }
+
+    #everythingelse {
+        width: calc(100% - 120px - 50px);
+        position: relative;
+
+        #context {
+            z-index: 1000;
+            position: absolute;
+            left: 8px;
+            right: 8px;
+            bottom: 50px;
+            padding: 5px 5px;
+            border-radius: 5px;
+
+            #botheading,
+            .cmdListing {
+                padding: 0px 5px;
+                border-radius: 5px;
+            }
+
+            #botheading {
+                svg {
+                    height: 1em;
+                    width: 1em;
+                    alignment-baseline: central;
+                    border-radius: .75em;
+                    padding: .15em
+                }
+            }
+
+            .cmdListing {
+                cursor: pointer;
+                margin-top: .5em;
+
+                .slash {
+                    font-weight: bold;
+                    line-height: 1.4em;
+                }
+
+                .description {
+                    font-size: .75em;
+                    line-height: 1.4em;
+                }
+            }
+        }
+
+        #chattextbox {
+            position: absolute;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border-radius: 5px;
+            padding: 5px 10px;
+
+            #chattextboxph {
+                display: none;
+            }
+        }
+    }
+
+    #channellist {
+        width: 120px;
+        padding: 2px 4px;
+
+        &>div {
+            padding: 0 6px;
+
+            &.selected {
+                border-radius: 5px;
+            }
+        }
+
+        .voice>div {
+            margin-left: 10pt;
+
+            svg {
+                border-radius: 10pt;
+                overflow: none;
+                padding: .1em;
+            }
+
+            &#tauntbotvoice {
+                display: none;
+            }
+        }
+
+        div svg {
+            alignment-baseline: central;
+            height: 10pt;
+            width: 10pt;
+        }
+    }
+
+    #serverlist {
+        width: 50px;
+
+        &>div {
+            text-align: center;
+            margin-top: 8px;
+
+            &.selected,
+            &.unread {
+                position: relative;
+
+                &::before {
+                    display: block;
+                    position: absolute;
+                    width: 3px;
+                    height: 35px;
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                    content: '';
+                }
+            }
+
+            &.unread.unread::before {
+                height: 6px;
+                top: 15px;
+            }
+
+            svg {
+                overflow: visible;
+                padding: 8px;
+                width: 35px;
+                height: 35px;
+                border-radius: 18px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 300px) {
+    section:has(#miniD) {
+        display: none;
+    }
+}

@@ -11,137 +11,141 @@
         <div class="center">
             <a class="addBtn" href="<%= connectUrl %>">Add to Discord</a>
         </div>
-        <section>
-            <div>
-                <h1>Taunt Bot</h1>
-                <span class="color-2 ital">Celebrate your victories</span>
-            </div>
-            <div>
-                <p>
-                    Taunt Bot is a Discord bot that plays your custom audio clips on command and when you join a voice channel. Play your victory anthem when you win. Humble yourself with a lose track. Intro taunts play when you connect to voice chat.
-                </p>
-            </div>
-        </section>
-        <section>
-            <div id="miniD">
-                <div id="serverlist">
-                    <div><%- inliner('assets/images/svg/iconoir/chat-bubble-empty-solid.svg') %></div>
-                    <div class="selected background magenta"><%- inliner('assets/images/svg/iconoir/hexagon-dice.svg') %></div>
-                    <div class="unread background blurple"><%- inliner('assets/images/svg/iconoir/code.svg') %></div>
-                    <div class="background green"><%- inliner('assets/images/svg/iconoir/football-ball.svg') %></div>
-                    <div class="background gold"><%- inliner('assets/images/svg/iconoir/palette.svg') %></div>
+        <div role="main">
+            <section>
+                <div>
+                    <h1>Taunt Bot</h1>
+                    <span class="color-2 ital">Celebrate your victories</span>
                 </div>
-                <div id="channellist">
-                    <div class="text"><%- inliner('assets/images/svg/iconoir/hashtag.svg') %> welcome</div>
-                    <div class="text selected"><%- inliner('assets/images/svg/iconoir/hashtag.svg') %> general</div>
-                    <div class="voice">
-                        <span class="joined"><%- inliner('assets/images/svg/iconoir/sound-high-solid.svg') %></span> voice
-                        <div><%- inliner('assets/images/svg/iconoir/user.svg') %> You</div>
-                        <div id="tauntbotvoice"><%- inliner('assets/images/svg/logo.svg') %> Taunt Bot</div>
+                <div>
+                    <p>
+                        Taunt Bot is a Discord bot that plays your custom audio clips on command and when you join a voice channel. Play your victory anthem when you win. Humble yourself with a lose track. Intro taunts play when you connect to voice chat.
+                    </p>
+                </div>
+            </section>
+            <section>
+                <div id="miniD">
+                    <div id="serverlist">
+                        <div><%- inliner('assets/images/svg/iconoir/chat-bubble-empty-solid.svg') %></div>
+                        <div class="selected background magenta"><%- inliner('assets/images/svg/iconoir/hexagon-dice.svg') %></div>
+                        <div class="unread background blurple"><%- inliner('assets/images/svg/iconoir/code.svg') %></div>
+                        <div class="background green"><%- inliner('assets/images/svg/iconoir/football-ball.svg') %></div>
+                        <div class="background gold"><%- inliner('assets/images/svg/iconoir/palette.svg') %></div>
                     </div>
-                    <div class="voice"><%- inliner('assets/images/svg/iconoir/sound-high-solid.svg') %> afk</div>
-                </div>
-                <div id="everythingelse">
-                    <div id="context">
-                        <div id="botheading"><%- inliner('assets/images/svg/logo.svg') %> Taunt Bot</div>
-                        <div id="commands">
-                            <% (commands || []).forEach(command => { %>
-                                <div class="cmdListing">
-                                    <div class="slash"><%= command.slashCommand %></div>
-                                    <div class="description color-2"><%= command.description %></div>
-                                </div>
-                            <% }); %>
+                    <div id="channellist">
+                        <div class="text"><%- inliner('assets/images/svg/iconoir/hashtag.svg') %> welcome</div>
+                        <div class="text selected"><%- inliner('assets/images/svg/iconoir/hashtag.svg') %> general</div>
+                        <div class="text"><%- inliner('assets/images/svg/iconoir/hashtag.svg') %> rpg</div>
+                        <div class="voice">
+                            <span class="joined"><%- inliner('assets/images/svg/iconoir/sound-high-solid.svg') %></span> voice
+                            <div><%- inliner('assets/images/svg/iconoir/user.svg') %> You</div>
+                            <div id="tauntbotvoice"><%- inliner('assets/images/svg/logo.svg') %> Taunt Bot</div>
                         </div>
+                        <div class="voice"><%- inliner('assets/images/svg/iconoir/sound-high-solid.svg') %> afk</div>
                     </div>
-                    <div id="chattextbox">/</div>
+                    <div id="everythingelse">
+                        <div id="context">
+                            <div id="botheading"><%- inliner('assets/images/svg/logo.svg') %> Taunt Bot</div>
+                            <div id="commands">
+                                <% (commands || []).forEach(command => { %>
+                                    <div class="cmdListing" data-cmd="<%= command.slashCommand.substring(1) %>">
+                                        <div class="slash"><%= command.slashCommand %></div>
+                                        <div class="description color-2"><%= command.description %></div>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                        <div id="chattextbox"><span id="chattextboxslash">/</span><span id="chattextboxph" class="color-2">Message #general</span></div>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section>
-            <div>
-                <h2>Getting Started</h2>
-            </div>
-            <div>
-                <p>If you're a server owner, start by <a href="<%= connectUrl %>">connecting Taunt Bot</a> so your members can use it.</p>
-                <p>Once you're in a guild that has Taunt Bot in it, use the <span class="command">/upload</span> command to upload taunts.</p>
-                <p>While in voice, use the <a href="#commands">corresponding play commands</a> to hear Taunt Bot play your tracks.</p>
-            </div>
-        </section>
-        <% if (stats.server_count > 0 || stats.year_taunts > 0) { %>
-        <section>
-            <div>
-                <h2>Stats</h2>
-            </div>
-            <% if (stats.server_count > 0) { %>
-            <div>
-                Connected to <%= stats.server_count %> Discord guilds
-            </div>
+            </section>
+            <section>
+                <div>
+                    <h2>Getting Started</h2>
+                </div>
+                <div>
+                    <p>If you're a server owner, start by <a href="<%= connectUrl %>">connecting Taunt Bot</a> so your members can use it.</p>
+                    <p>Once you're in a guild that has Taunt Bot in it, use the <span class="command">/upload</span> command to upload taunts.</p>
+                    <p>While in voice, use the <a href="#commands">corresponding play commands</a> to hear Taunt Bot play your tracks.</p>
+                </div>
+            </section>
+            <% if (stats.server_count > 0 || stats.year_taunts > 0) { %>
+            <section>
+                <div>
+                    <h2>Stats</h2>
+                </div>
+                <% if (stats.server_count > 0) { %>
+                <div>
+                    Connected to <%= stats.server_count %> Discord guilds
+                </div>
+                <% } %>
+                <% if (stats.year_taunts > 0) { %>
+                <div>
+                    <%= stats.year_taunts %> taunts played this year
+                </div>
+                <% } %>
+            </section>
             <% } %>
-            <% if (stats.year_taunts > 0) { %>
-            <div>
-                <%= stats.year_taunts %> taunts played this year
-            </div>
-            <% } %>
-        </section>
-        <% } %>
-        <section>
-            <div>
-                <h2 id="commands">Commands</h2>
-            </div>
-            <div>
-                <h3 class="command">/upload</h3>
-                <p class="color-2">Uploads an audio clip to serve as your taunt</p>
-            </div>
-            <div>
-                <h3 class="command">/win</h3>
-                <p class="color-2">Plays your "victory" taunt</p>
-            </div>
-            <div>
-                <h3 class="command">/mvp</h3>
-                <p class="color-2">Plays your "mvp" taunt</p>
-            </div>
-            <div>
-                <h3 class="command">/lose</h3>
-                <p class="color-2">Plays your "lose" taunt</p>
-            </div>
-            <div>
-                <h3 class="command">/stop</h3>
-                <p class="color-2">Stops taunt playback early</p>
-            </div>
-        </section>
-        <section>
-            <div>
-                <h2>Privacy</h2>
-            </div>
-            <div>
-                <p>The only data that is kept is your currently uploaded audio taunts and logs. Delete your taunts using the <span class="command">/delete</span> command.</p>
-                <p>Taunt Bot logs taunt plays (what audio file in which server, statistics).</p>
-                <p>Your data is never shared or sold.</p>
-            </div>
-        </section>
-        <section>
-            <div>
-                <h2>Support</h2>
-            </div>
-            <div>
-                Join <a href="/discord">my Discord Guild</a> for assistance.
-            </div>
-        </section>
-        <section>
-            <div>
-                <h2>Source Code</h2>
-            </div>
-            <div>
-                <p>Taunt Bot is open source, licensed under GPLv3. <a href="https://github.com/CorySanin/tauntbot">Browse the source code</a> on GitHub.</p>
-                <p>Available in <a href="https://www.npmjs.com/package/tauntbot">npm</a> and <a href="https://hub.docker.com/r/corysanin/tauntbot">Docker Hub</a>.</p>
-            </div>
-            <div>
-                <p>This website is licensed under MIT. <a href="https://github.com/CorySanin/tauntbot-web">Browse the source code</a> on GitHub.</p>
-            </div>
-            <div>
-                Site and bot developed by <a href="https://sanin.dev/">Cory Sanin</a> AKA <a href="https://whoisworm.com/">WORM</a>
-            </div>
-        </section>
+            <section>
+                <div>
+                    <h2 id="commands">Commands</h2>
+                </div>
+                <div>
+                    <h3 class="command">/upload</h3>
+                    <p class="color-2">Uploads an audio clip to serve as your taunt. Intro taunts can be up to <%= tauntParameters.intro.maxDurationHumanReadable %> long. Other taunt types' max durations are listed below.</p>
+                </div>
+                <div>
+                    <h3 class="command">/win</h3>
+                    <p class="color-2">Plays your "victory" taunt (max <%= tauntParameters.victory.maxDurationHumanReadable %>)</p>
+                </div>
+                <div>
+                    <h3 class="command">/mvp</h3>
+                    <p class="color-2">Plays your "mvp" taunt (max <%= tauntParameters.mvp.maxDurationHumanReadable %>)</p>
+                </div>
+                <div>
+                    <h3 class="command">/lose</h3>
+                    <p class="color-2">Plays your "lose" taunt (max <%= tauntParameters.lose.maxDurationHumanReadable %>)</p>
+                </div>
+                <div>
+                    <h3 class="command">/stop</h3>
+                    <p class="color-2">Stops taunt playback early</p>
+                </div>
+            </section>
+            <section>
+                <div>
+                    <h2>Privacy</h2>
+                </div>
+                <div>
+                    <p>The only data that is kept is your currently uploaded audio taunts and logs. Delete your taunts using the <span class="command">/delete</span> command.</p>
+                    <p>Taunt Bot logs taunt plays (what audio file in which server, statistics).</p>
+                    <p>Your data is never shared or sold.</p>
+                </div>
+            </section>
+            <section>
+                <div>
+                    <h2>Support</h2>
+                </div>
+                <div>
+                    Join <a href="/discord">my Discord Guild</a> for assistance.
+                </div>
+            </section>
+            <section>
+                <div>
+                    <h2>Source Code</h2>
+                </div>
+                <div>
+                    <p>Taunt Bot is open source, licensed under GPLv3. <a href="https://github.com/CorySanin/tauntbot">Browse the bot source code</a> on GitHub.</p>
+                    <p>Available in <a href="https://www.npmjs.com/package/tauntbot">npm</a> and <a href="https://hub.docker.com/r/corysanin/tauntbot">Docker Hub</a>.</p>
+                </div>
+                <div>
+                    <p>This website is licensed under MIT. <a href="https://github.com/CorySanin/tauntbot-web">Browse the site source code</a> on GitHub.</p>
+                </div>
+                <div>
+                    Site and bot developed by <a href="https://sanin.dev/">Cory Sanin</a> AKA <a href="https://whoisworm.com/">WORM</a>
+                </div>
+            </section>
+        </div>
     </div>
+    <script src="/assets/js/minid.js?v1" nonce="<%= cspNonce %>" defer></script>
 </body>
 </html>
