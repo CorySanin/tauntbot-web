@@ -1,3 +1,15 @@
+@keyframes entice {
+    from {
+        color: var(--font-2);
+        margin-bottom: .25em;
+    }
+
+    to {
+        color: var(--font-1);
+        margin-bottom: 1em;
+    }
+}
+
 section:has(#miniD#miniD) {
     display: block;
 }
@@ -94,12 +106,20 @@ section:has(#miniD#miniD) {
         width: calc(100% - 120px - 50px);
         position: relative;
 
-        #context {
+        #contextcontainer {
             z-index: 1000;
             position: absolute;
             left: 8px;
             right: 8px;
             bottom: 50px;
+
+            #tryme {
+                animation: 2s infinite alternate entice;
+                font-size: 16pt;
+            }
+        }
+
+        #context {
             padding: 5px 5px;
             border-radius: 5px;
 

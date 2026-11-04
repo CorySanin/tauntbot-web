@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const tbVoice = document.getElementById('tauntbotvoice');
-    const contextWindow = document.getElementById('context');
+    const contextWindow = document.getElementById('contextcontainer');
     const slashText = document.getElementById('chattextboxslash');
     const placeholderText = document.getElementById('chattextboxph');
     const joinSnd = new Audio('/assets/audio/fluxer/user-join.mp3');
