@@ -175,6 +175,9 @@ importers:
       lru-cache:
         specifier: ^11.5.3
         version: 11.5.3
+      tauntbot:
+        specifier: ^5.0.1
+        version: 5.0.1(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
       yaml:
         specifier: ^2.9.1
         version: 2.9.1
@@ -197,9 +200,6 @@ importers:
       realfavicon:
         specifier: ^0.9.3
         version: 0.9.3
-      tauntbot:
-        specifier: ^5.0.1
-        version: 5.0.1(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
       typescript:
         specifier: 7.0.2
         version: 7.0.2
