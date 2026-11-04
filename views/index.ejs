@@ -23,6 +23,41 @@
             </div>
         </section>
         <section>
+            <div id="miniD">
+                <div id="serverlist">
+                    <div><%- inliner('assets/images/svg/iconoir/chat-bubble-empty-solid.svg') %></div>
+                    <div class="selected background magenta"><%- inliner('assets/images/svg/iconoir/hexagon-dice.svg') %></div>
+                    <div class="unread background blurple"><%- inliner('assets/images/svg/iconoir/code.svg') %></div>
+                    <div class="background green"><%- inliner('assets/images/svg/iconoir/football-ball.svg') %></div>
+                    <div class="background gold"><%- inliner('assets/images/svg/iconoir/palette.svg') %></div>
+                </div>
+                <div id="channellist">
+                    <div class="text"><%- inliner('assets/images/svg/iconoir/hashtag.svg') %> welcome</div>
+                    <div class="text selected"><%- inliner('assets/images/svg/iconoir/hashtag.svg') %> general</div>
+                    <div class="voice">
+                        <span class="joined"><%- inliner('assets/images/svg/iconoir/sound-high-solid.svg') %></span> voice
+                        <div><%- inliner('assets/images/svg/iconoir/user.svg') %> You</div>
+                        <div id="tauntbotvoice"><%- inliner('assets/images/svg/logo.svg') %> Taunt Bot</div>
+                    </div>
+                    <div class="voice"><%- inliner('assets/images/svg/iconoir/sound-high-solid.svg') %> afk</div>
+                </div>
+                <div id="everythingelse">
+                    <div id="context">
+                        <div id="botheading"><%- inliner('assets/images/svg/logo.svg') %> Taunt Bot</div>
+                        <div id="commands">
+                            <% (commands || []).forEach(command => { %>
+                                <div class="cmdListing">
+                                    <div class="slash"><%= command.slashCommand %></div>
+                                    <div class="description color-2"><%= command.description %></div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                    <div id="chattextbox">/</div>
+                </div>
+            </div>
+        </section>
+        <section>
             <div>
                 <h2>Getting Started</h2>
             </div>

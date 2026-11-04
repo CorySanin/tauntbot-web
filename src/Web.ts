@@ -21,6 +21,11 @@ export interface TbStatsFile {
     year: stats.TauntStats;
 }
 
+interface CommandDetails {
+    slashCommand: `/${string}`;
+    description: string;
+}
+
 /**
  * I still hate typescript.
  */
@@ -79,7 +84,21 @@ export class Web {
                     description: 'Hear your winning anthem in Discord voice chat. Upload your own audio clips for the bot to play.'
                 },
                 connectUrl: options.clientId && `https://discordapp.com/oauth2/authorize?client_id=${options.clientId}&scope=bot&permissions=${options.permissions ?? 3165184}`,
-                stats: await this.getStatsBody()
+                stats: await this.getStatsBody(),
+                commands: [
+                    {
+                        slashCommand: '/win',
+                        description: 'Plays your victory track'
+                    },
+                    {
+                        slashCommand: '/mvp',
+                        description: 'Plays your mvp track'
+                    },
+                    {
+                        slashCommand: '/lose',
+                        description: 'Plays your lose track'
+                    }
+                ] satisfies CommandDetails[]
             });
         });
 
