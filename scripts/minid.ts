@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
             case 'lose':
                 return new Audio('/assets/audio/sad_trombone.mp3');
             case 'win':
-                return new Audio('/assets/audio/noise-maker.mp3');
+                return new Audio('/assets/audio/wano.mp3');
             default:
                 throw new Error('invalid command');
         }
